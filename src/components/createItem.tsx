@@ -1,86 +1,62 @@
-import React, { useState } from "react";
+import { Formik, Form, Field } from "formik";
+import { remult } from "remult";
+import { Item } from "../sherd/item";
+import { sendMessage } from "../backend/whatsapp";
 
-const CreateItem: React.FC = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [price, setPrice] = useState("");
-  const [status, setStatus] = useState("");
+const CreateItem = () => {
+  const repo = remult.repo(Item);
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-
-  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPhone(event.target.value);
-  };
-
-  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value);
-  };
-
-  const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setStatus(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async (values: any) => {
     // Handle form submission logic here
+    await repo.insert(values);
+    sendMessage(values);
   };
 
   return (
-    <form id="create" onSubmit={handleSubmit}>
-      <label>
-        שם:
-        <input
-          type="text"
-          value={name}
-          onChange={handleNameChange}
-          style={{ color: "red" }}
-        />
-      </label>
-      <br />
-      <label>
-        טלפון:
-        <input
-          type="text"
-          value={phone}
-          onChange={handlePhoneChange}
-          style={{ color: "blue" }}
-        />
-      </label>
-      <br />
-      <label>
-        מחיר:
-        <input
-          type="text"
-          value={price}
-          onChange={handlePriceChange}
-          style={{ color: "green" }}
-        />
-      </label>
-      <br />
-      <label>
-        סטטוס:
-        <select
-          value={status}
-          onChange={handleStatusChange}
-          style={{ color: "purple" }}
-        >
-          <option value="in_progress">מחכה לאיסוף</option>
-          <option value="completed">הושלם</option>
-        </select>
-      </label>
+    <Formik
+      initialValues={{
+        name: "",
+        phone: "",
+        price: "",
+        status: "",
+      }}
+      onSubmit={handleSubmit}
+    >
+      <Form id="create">
+        <label>
+          שם:
+          <Field type="text" name="name" style={{ color: "red" }} />
+        </label>
+        <br />
+        <label>
+          טלפון:
+          <Field type="text" name="phone" style={{ color: "blue" }} />
+        </label>
+        <br />
+        <label>
+          מחיר:
+          <Field type="text" name="price" style={{ color: "green" }} />
+        </label>
+        <br />
+        <label>
+          סטטוס:
+          <Field as="select" name="status" style={{ color: "purple" }}>
+            <option value="in_progress">מחכה לאיסוף</option>
+            <option value="completed">הושלם</option>
+          </Field>
+        </label>
 
-      <label>
-        מיקופ איסוף:
-        <select style={{ color: "orange" }}>
-          <option value="type2">צפת</option>
-          <option value="type3">ראשון</option>
-        </select>
-      </label>
-      <br />
-      <button type="submit">שלח</button>
-    </form>
+        <label>
+          מיקופ איסוף:
+          <Field as="select" name="pickupLocation" style={{ color: "orange" }}>
+            <option value="zefat">צפת</option>
+            <option value="rishon">ראשון</option>
+          </Field>
+        </label>
+        <br />
+        <button type="submit">שלח</button>
+      </Form>
+    </Formik>
   );
 };
 
