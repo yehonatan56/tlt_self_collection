@@ -1,12 +1,14 @@
 import express from "express";
 import { remultExpress } from "remult/remult-express";
 import { Item } from "../sherd/item";
-import { startWhatsapp } from "./whatsapp";
+import { whatsapp } from "./whatsapp";
+import { startWhatsapp } from "./whatsapp-on-server";
 const app = express();
 const PORT = 3000;
 
 app.use(
   remultExpress({
+    controllers: [whatsapp],
     entities: [Item],
   })
 );

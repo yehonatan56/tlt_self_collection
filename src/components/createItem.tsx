@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import { remult } from "remult";
 import { Item } from "../sherd/item";
-import { sendMessage } from "../backend/whatsapp";
+import { whatsapp } from "../backend/whatsapp";
 
 const CreateItem = () => {
   const repo = remult.repo(Item);
@@ -9,7 +9,7 @@ const CreateItem = () => {
   const handleSubmit = async (values: any) => {
     // Handle form submission logic here
     await repo.insert(values);
-    sendMessage(values);
+    whatsapp.sendMessage(values);
   };
 
   return (
@@ -17,7 +17,7 @@ const CreateItem = () => {
       initialValues={{
         name: "",
         phone: "",
-        price: "",
+        product: "",
         status: "",
       }}
       onSubmit={handleSubmit}
@@ -34,8 +34,8 @@ const CreateItem = () => {
         </label>
         <br />
         <label>
-          מחיר:
-          <Field type="text" name="price" style={{ color: "green" }} />
+          מוצר:
+          <Field type="text" name="product" style={{ color: "green" }} />
         </label>
         <br />
         <label>

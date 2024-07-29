@@ -9,7 +9,7 @@ export default function ListItem({ item: item }: { item: Item }) {
   return (
     <Table.Tr key={item.id}>
       <Table.Td>{item.name}</Table.Td>
-      <Table.Td>{item.price}</Table.Td>
+      <Table.Td>{item.product}</Table.Td>
       <Table.Td>{item.phone}</Table.Td>
       <Table.Td>
         <Checkbox

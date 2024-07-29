@@ -19,11 +19,13 @@ export default function List() {
       <h1>רשימת פריטים</h1>
       <Table border={2}>
         <Table.Thead>
-          <Table.Th>שם</Table.Th>
-          <Table.Th>מחיר</Table.Th>
-          <Table.Th>טלפון</Table.Th>
-          <Table.Th>סטטוס</Table.Th>
-          <Table.Th>מיקום איסוף</Table.Th>
+          <Table.Tr>
+            <Table.Th>שם</Table.Th>
+            <Table.Th>מחיר</Table.Th>
+            <Table.Th>טלפון</Table.Th>
+            <Table.Th>סטטוס</Table.Th>
+            <Table.Th>מיקום איסוף</Table.Th>
+          </Table.Tr>
         </Table.Thead>
         {items.map((item) => (
           <ListItem item={item} />

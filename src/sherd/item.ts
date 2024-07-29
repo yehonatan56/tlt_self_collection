@@ -11,7 +11,7 @@ export class Item {
   @Fields.string()
   phone = "";
   @Fields.string()
-  price = "";
+  product = "";
   @Fields.string()
   status = "in_progress";
   @Fields.string()
