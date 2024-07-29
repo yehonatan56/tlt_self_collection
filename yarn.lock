@@ -2253,7 +2253,7 @@ progress@2.0.3:
   resolved "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-prop-types@^15.7.2:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2394,6 +2394,13 @@ react-remove-scroll@^2.5.7:
     tslib "^2.1.0"
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
+
+react-responsive-pagination@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.npmjs.org/react-responsive-pagination/-/react-responsive-pagination-2.6.1.tgz"
+  integrity sha512-NGrzvfFTPgnVdIPhWx8gGksZj6057LdkHm0WERHMxSOdj2pLRgc8+WxPCThKtBc6IANLf+BVDEBysqK1912VLA==
+  dependencies:
+    prop-types "^15.8.1"
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
