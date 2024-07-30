@@ -1,5 +1,5 @@
 import { Checkbox, Table } from "@mantine/core";
-import React, { useState } from "react";
+import { useState } from "react";
 import { remult } from "remult";
 import { Item } from "../sherd/item";
 
