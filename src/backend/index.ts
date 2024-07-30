@@ -6,8 +6,9 @@ import { startWhatsapp } from "./whatsapp-on-server";
 import Pool from "pg";
 import { SqlDatabase } from "remult";
 import { PostgresDataProvider } from "remult/postgres";
+
 const pg = new Pool.Pool({
-  connectionString: "postgres://postgres:102030@localhost:5432/postgres",
+  connectionString: process.env.DB,
 });
 const app = express();
 const PORT = 3000;

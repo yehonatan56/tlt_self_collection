@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite && tsx watch src/backend",
     "build": "tsc && vite build && tsc -p tsconfig.server.json",
     "dev-node": "tsx watch src/backend",
     "preview": "vite preview"
@@ -12,6 +13,7 @@
   "dependencies": {
     "@mantine/core": "7.11.2",
     "@mantine/hooks": "7.11.2",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "formik": "^2.4.6",
     "pg": "^8.12.0",
