@@ -3,25 +3,26 @@ import { remultExpress } from "remult/remult-express";
 import { Item } from "../sherd/item";
 import { whatsapp } from "./whatsapp";
 import { startWhatsapp } from "./whatsapp-on-server";
-import Pool from "pg";
-import { SqlDatabase } from "remult";
-import { PostgresDataProvider } from "remult/postgres";
+import { config } from "dotenv";
 
-const pg = new Pool.Pool({
-  connectionString: process.env.DB,
-});
+import { createPostgresDataProvider } from "remult/postgres";
+config();
 const app = express();
 const PORT = 3000;
 
 app.use(
   remultExpress({
-    dataProvider: new SqlDatabase(new PostgresDataProvider(pg)),
+    dataProvider: createPostgresDataProvider({
+      connectionString: process.env.DATABASE_URL,
+    }),
 
     controllers: [whatsapp],
     entities: [Item],
   })
 );
 startWhatsapp();
-app.listen(PORT, () => {
+
+app.use(express.static(process.cwd() + "/dist"));
+app.listen(process.env["PORT"] || PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
