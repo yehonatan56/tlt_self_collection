@@ -9,7 +9,7 @@ const CreateItem = () => {
   const handleSubmit = async (values: any) => {
     // Handle form submission logic here
     await repo.insert(values);
-    whatsapp.sendMessage(values);
+    // whatsapp.sendMessage(values);
   };
 
   return (

@@ -2,7 +2,7 @@ import express from "express";
 import { remultExpress } from "remult/remult-express";
 import { Item } from "../sherd/item";
 import { whatsapp } from "./whatsapp";
-import { startWhatsapp } from "./whatsapp-on-server";
+// import { startWhatsapp } from "./whatsapp-on-server";
 import { config } from "dotenv";
 
 import { createPostgresDataProvider } from "remult/postgres";
@@ -20,7 +20,7 @@ app.use(
     entities: [Item],
   })
 );
-startWhatsapp();
+// startWhatsapp();
 
 app.use(express.static(process.cwd() + "/dist"));
 app.listen(process.env["PORT"] || PORT, () => {
