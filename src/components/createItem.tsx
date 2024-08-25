@@ -1,9 +1,12 @@
+import React from 'react';
 import { Formik, Form, Field } from "formik";
 import { remult } from "remult";
 import { Item } from "../sherd/item";
 import { whatsapp } from "../backend/whatsapp";
 
+// export default
 const CreateItem = () => {
+  // todo: put outside the component
   const repo = remult.repo(Item);
 
   const handleSubmit = async (values: any) => {
@@ -12,6 +15,7 @@ const CreateItem = () => {
     // whatsapp.sendMessage(values);
   };
 
+  // todo: change to htmlFor label
   return (
     <Formik
       initialValues={{
@@ -22,22 +26,25 @@ const CreateItem = () => {
       }}
       onSubmit={handleSubmit}
     >
-      <Form id="create">
-        <label>
-          שם:
-          <Field type="text" name="name" style={{ color: "red" }} />
-        </label>
-        <br />
-        <label>
-          טלפון:
+      <Form id="create" style={{ display:'flex', flexDirection: 'column', gap: '1em' }}>
+
+        <div style={{ display:'flex', gap: '1em' }}>
+          <label htmlFor='name'>שם:</label>
+          <Field id='name' type="text" name="name" style={{ color: "red" }} />
+        </div>
+
+        <div>
+          <label>טלפון:</label>
           <Field type="text" name="phone" style={{ color: "blue" }} />
-        </label>
-        <br />
+        </div>
+
         <label>
           מוצר:
           <Field type="text" name="product" style={{ color: "green" }} />
         </label>
+
         <br />
+
         <label>
           סטטוס:
           <Field as="select" name="status" style={{ color: "purple" }}>
@@ -53,7 +60,9 @@ const CreateItem = () => {
             <option value="rishon">ראשון</option>
           </Field>
         </label>
+
         <br />
+
         <button type="submit">שלח</button>
       </Form>
     </Formik>

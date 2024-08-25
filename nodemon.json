@@ -1,0 +1,6 @@
+{
+    "watch": ["src/backend"],
+    "ext": "ts",
+    "ignore": ["src/backend/**/*.spec.ts"],
+    "exec": "ts-node --project tsconfig.server.json ./src/backend/index.ts"
+}

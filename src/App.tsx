@@ -7,8 +7,8 @@ import List from "./components/list";
 export default function App() {
   return (
     <MantineProvider theme={theme}>
-      {<CreateItem />}
-      <List />
+        <CreateItem />
+        <List />
     </MantineProvider>
   );
 }
